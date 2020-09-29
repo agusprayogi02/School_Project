@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index'])->name('index');
+Route::get('/', [App\Http\Controllers\SiswaController::class, 'index'])->name('index');
+Route::post('/siswa/create', [App\Http\Controllers\SiswaController::class, 'create'])->name('create');
+Route::get('/siswa/{id}/edit', [App\Http\Controllers\SiswaController::class, 'edit'])->name('edit');
+Route::post('/siswa/{id}/update', [App\Http\Controllers\SiswaController::class, 'update'])->name('update');
 
 Auth::routes();
 
